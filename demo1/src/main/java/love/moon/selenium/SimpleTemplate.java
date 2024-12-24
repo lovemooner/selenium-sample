@@ -1,7 +1,8 @@
 package love.moon.selenium;
 
 
-import love.moon.selenium.demo.Constants;
+import love.moon.selenium.demo.AbsTest;
+import love.moon.selenium.pojo.Constants;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,19 +11,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class SimpleTemplate {
+public class SimpleTemplate  extends AbsTest {
 
-    String url = Constants.url;
+    String url = "https://www.selenium.dev/selenium/web/web-form.html";
 
     @Test
     public void first() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+        // 等待加载
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         driver.get("https://www.selenium.dev/selenium/web/web-form.html");
 
         String title = driver.getTitle();
         System.out.println("title:" + title);
-        // 等待加载
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+
 
         WebElement textBox = driver.findElement(By.name("my-text"));
         WebElement submitButton = driver.findElement(By.cssSelector("button"));
@@ -40,8 +41,6 @@ public class SimpleTemplate {
         //关闭浏览器，结束会话
         driver.quit();
     }
-
-
 
 
 }

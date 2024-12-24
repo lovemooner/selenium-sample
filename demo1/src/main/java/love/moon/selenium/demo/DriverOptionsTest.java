@@ -1,4 +1,4 @@
-package love.moon.selenium;
+package love.moon.selenium.demo;
 
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
